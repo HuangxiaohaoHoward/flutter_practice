@@ -40,6 +40,9 @@ main(List<String> args) {
   funcParam2((num1, num2) {
     return num1 + num2;
   });
+
+  specialOperator();
+  cascadeOperator();
 }
 
 class Person {
@@ -70,11 +73,48 @@ void sayHello3(String name,
 void testArrowFunc(Function func) {
   var result = func();
 }
-void testFuncParam(int foo(int num1, int num2)) {
 
+void testFuncParam(int foo(int num1, int num2)) {
   print(foo(2, 3));
 }
+
 typedef Sum = int Function(int num1, int num2);
+
 void funcParam2(Sum sum) {
   print(sum(1, 2));
 }
+
+//region 特殊运算符
+
+void specialOperator() {
+  var name = "why";
+  /*
+??= 空才赋值
+ */
+  name ??= "jms";
+  print(name);
+}
+
+/*
+* 级联运算符
+*
+* */
+void cascadeOperator() {
+  var p = CascadePerson()
+    ..name = "ll"
+    ..eat()
+    ..run();
+}
+
+class CascadePerson {
+  late String name;
+
+  void run() {
+    print("run");
+  }
+
+  void eat() {
+    print("eat");
+  }
+}
+//endregion
